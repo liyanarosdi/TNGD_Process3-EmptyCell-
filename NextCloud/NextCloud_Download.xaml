@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>958.4,2834.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1086.4,5772.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>NextCloud_Download_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -76,7 +76,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="NextCloud_Download" sap:VirtualizedContainerService.HintSize="710.4,2729.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="NextCloud_Download" sap:VirtualizedContainerService.HintSize="1096.8,5668" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="DateT1" />
       <Variable x:TypeArguments="x:String" Name="MonthT1" />
@@ -95,7 +95,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="668.8,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="1055.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[DateT1]</OutArgument>
       </Assign.To>
@@ -103,7 +103,7 @@
         <InArgument x:TypeArguments="x:String">[in_DateT1.ToString("yyyy-MM-dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="668.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="1055.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Montht1]</OutArgument>
       </Assign.To>
@@ -111,7 +111,7 @@
         <InArgument x:TypeArguments="x:String">[in_DateT1.ToString("MM")]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Montht1 &lt; &quot;10&quot;]" sap:VirtualizedContainerService.HintSize="668.8,52.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Montht1 &lt; &quot;10&quot;]" sap:VirtualizedContainerService.HintSize="1055.2,52.8" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -136,7 +136,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <Assign sap:VirtualizedContainerService.HintSize="668.8,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="1055.2,60" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FileSuccess]</OutArgument>
       </Assign.To>
@@ -144,8 +144,8 @@
         <InArgument x:TypeArguments="x:String">[Montht1 + ". " + in_DateT1.ToString("MMM") + "'" + in_DateT1.ToString("yy")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:PathExists DisplayName="Path Exists - Month Successfull transaction" Exists="[bMonth]" sap:VirtualizedContainerService.HintSize="668.8,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess]" PathType="Folder" />
-    <If Condition="[bMonth = False]" DisplayName="If - File path Month" sap:VirtualizedContainerService.HintSize="668.8,230.4" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:PathExists DisplayName="Path Exists - Month Successfull transaction" Exists="[bMonth]" sap:VirtualizedContainerService.HintSize="1055.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess]" PathType="Folder" />
+    <If Condition="[bMonth = False]" DisplayName="If - File path Month" sap:VirtualizedContainerService.HintSize="1055.2,230.4" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -156,8 +156,8 @@
         <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess]" />
       </If.Then>
     </If>
-    <ui:PathExists DisplayName="Path Exists - Date Successfull transaction" Exists="[bDate]" sap:VirtualizedContainerService.HintSize="668.8,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; +in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess + &quot;\&quot; + in_DateT1.ToString(&quot;yyyy-MM-dd&quot;)]" PathType="Folder" />
-    <If Condition="[bDate = False]" DisplayName="If - File path date" sap:VirtualizedContainerService.HintSize="668.8,230.4" sap2010:WorkflowViewState.IdRef="If_3">
+    <ui:PathExists DisplayName="Path Exists - Date Successfull transaction" Exists="[bDate]" sap:VirtualizedContainerService.HintSize="1055.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; +in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess + &quot;\&quot; + in_DateT1.ToString(&quot;yyyy-MM-dd&quot;)]" PathType="Folder" />
+    <If Condition="[bDate = False]" DisplayName="If - File path date" sap:VirtualizedContainerService.HintSize="1055.2,230.4" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -168,31 +168,31 @@
         <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess + &quot;\&quot; + DateT1]" />
       </If.Then>
     </If>
-    <ui:PathExists DisplayName="Path Exists - Date Successfull transaction" Exists="[bFile]" sap:VirtualizedContainerService.HintSize="668.8,90.4" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;.csv.gz&quot;]" PathType="File" />
-    <If Condition="[bFile = False]" sap:VirtualizedContainerService.HintSize="668.8,1312" sap2010:WorkflowViewState.IdRef="If_6">
+    <ui:PathExists DisplayName="Path Exists - Date Successfull transaction" Exists="[bFile]" sap:VirtualizedContainerService.HintSize="1055.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;.csv.gz&quot;]" PathType="File" />
+    <If Condition="[bFile = False]" sap:VirtualizedContainerService.HintSize="1055.2,4250.4" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="524.8,1162.4" sap2010:WorkflowViewState.IdRef="Sequence_18">
+        <Sequence sap:VirtualizedContainerService.HintSize="911.2,4100.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke NextCloud_Login workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="NextCloud\NextCloud_Login.xaml">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke NextCloud_Login workflow" sap:VirtualizedContainerService.HintSize="869.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="NextCloud\NextCloud_Login.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Main NextCloud" sap:VirtualizedContainerService.HintSize="483.2,216" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="b1a78b6fd2f4c123f8da6e10225b4d5e" Selector="&lt;html app='chrome.exe' title='Files - Nextcloud' /&gt;">
+          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - Main NextCloud" sap:VirtualizedContainerService.HintSize="869.6,1306.4" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="b1a78b6fd2f4c123f8da6e10225b4d5e" Selector="&lt;html app='chrome.exe' title='Files - Nextcloud' /&gt;">
             <ui:BrowserScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="836,1159.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - (T-1) file" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
@@ -332,7 +332,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:BrowserScope>
-          <If Condition="[bFileExist = True]" sap:VirtualizedContainerService.HintSize="483.2,218.4" sap2010:WorkflowViewState.IdRef="If_5">
+          <If Condition="[bFileExist = True]" sap:VirtualizedContainerService.HintSize="869.6,2066.4" sap2010:WorkflowViewState.IdRef="If_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -340,11 +340,11 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <Sequence sap:VirtualizedContainerService.HintSize="484.8,1916.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear - Save As window" sap:VirtualizedContainerService.HintSize="443.2,52.8" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
@@ -518,7 +518,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:OnUiElementAppear>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into - Line count" EmptyField="True" sap:VirtualizedContainerService.HintSize="443.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text=" 800000">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into - Line count" EmptyField="True" sap:VirtualizedContainerService.HintSize="443.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="900000">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a0736065-9316-48a5-9621-8a4a1a338c8a" InformativeScreenshot="93eb32de12f31f75b4775fef135ab2a7" Selector="&lt;wnd app='split.exe' cls='TForm2' title='Split CSV File' /&gt;&lt;wnd cls='TSpinEdit' /&gt;" WaitForReady="INTERACTIVE">
                       <ui:Target.TimeoutMS>
@@ -593,7 +593,7 @@
               </Sequence>
             </If.Then>
           </If>
-          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - User profile" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - User profile" sap:VirtualizedContainerService.HintSize="869.6,107.2" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -612,7 +612,7 @@
               </ui:Target>
             </ui:Click.Target>
           </ui:Click>
-          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Logout button" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Logout button" sap:VirtualizedContainerService.HintSize="869.6,107.2" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -631,7 +631,7 @@
               </ui:Target>
             </ui:Click.Target>
           </ui:Click>
-          <ui:CloseWindow TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window - Nextcloud" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="CloseWindow_2" InformativeScreenshot="266b4dafb34667f304c28a2520435e07" Selector="&lt;html app='chrome.exe' title='Nextcloud' /&gt;" WaitForReady="INTERACTIVE" />
+          <ui:CloseWindow TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window - Nextcloud" sap:VirtualizedContainerService.HintSize="869.6,107.2" sap2010:WorkflowViewState.IdRef="CloseWindow_2" InformativeScreenshot="266b4dafb34667f304c28a2520435e07" Selector="&lt;html app='chrome.exe' title='Nextcloud' /&gt;" WaitForReady="INTERACTIVE" />
         </Sequence>
       </If.Then>
     </If>
