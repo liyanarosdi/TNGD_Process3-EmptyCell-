@@ -2,16 +2,16 @@
   <x:Members>
     <x:Property Name="io_IPayColI" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_IPAYColJ" Type="InOutArgument(x:Double)" />
-    <x:Property Name="in_DateT2" Type="InArgument(s:DateTime)" />
-    <x:Property Name="io_FolderMonthT2" Type="InArgument(x:String)" />
+    <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
+    <x:Property Name="io_FolderMonthT1" Type="InArgument(x:String)" />
   </x:Members>
-  <this:iPay88_Daily.io_FolderMonthT2>
+  <this:iPay88_Daily.io_FolderMonthT1>
     <InArgument x:TypeArguments="x:String" />
-  </this:iPay88_Daily.io_FolderMonthT2>
+  </this:iPay88_Daily.io_FolderMonthT1>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>575.2,1140.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>690.4,1180.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>iPay88_Daily_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -90,7 +90,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start iPay88_Daily&quot;]" />
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,624.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\5. Reload - IPay88 FPX Report\1. Terminal Activity Report\4. Year &quot; + in_DateT2.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonthT2 + &quot;\ipay88 Transaction Report &quot; +in_DateT2.ToString(&quot;ddMMyyyy&quot;) + &quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,624.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\5. Reload - IPay88 FPX Report\1. Terminal Activity Report\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_FolderMonthT1 + &quot;\ipay88 Transaction Report &quot; +in_DateT1.ToString(&quot;ddMMyyyy&quot;) + &quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>

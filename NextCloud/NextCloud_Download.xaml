@@ -273,7 +273,7 @@
                             </ui:CursorPosition>
                           </ui:Click.CursorPosition>
                           <ui:Click.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e1a2df08-1f01-4360-bbc9-a95a28da74ac" InformativeScreenshot="36cf0f85871b865ddf4c03e870484046" Selector="&lt;html app='chrome.exe' title='March - Files - Nextcloud' /&gt;&lt;webctrl aaname='successful-transaction-details-{{DateT1}}.csv' parentid='fileList' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE">
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e1a2df08-1f01-4360-bbc9-a95a28da74ac" InformativeScreenshot="36cf0f85871b865ddf4c03e870484046" Selector="&lt;html app='chrome.exe' title='* - Files - Nextcloud' /&gt;&lt;webctrl aaname='successful-transaction-details-{{DateT1}}.csv' parentid='fileList' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
