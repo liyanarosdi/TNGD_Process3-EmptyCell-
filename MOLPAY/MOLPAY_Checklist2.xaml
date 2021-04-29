@@ -11,6 +11,7 @@
     <x:Property Name="io_LatestDateMolM" Type="InOutArgument(x:Double)" />
     <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
     <x:Property Name="io_bEarlyDateMol" Type="InOutArgument(x:Boolean)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:MOLPAY_Checklist.io_FolderMonth>
     <InArgument x:TypeArguments="x:String" />
@@ -18,7 +19,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>667.2,3641.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>727.2,3200</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MOLPAY_Checklist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -93,7 +94,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="MOLPAY_Checklist" sap:VirtualizedContainerService.HintSize="677.6,3536.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MOLPAY_Checklist" sap:VirtualizedContainerService.HintSize="677.6,3095.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="LatestRow25" />
       <Variable x:TypeArguments="x:Double" Name="LatestRow24" />
@@ -209,7 +210,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (Early Date)" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + io_DateEarly.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderEarly + &quot;\&quot; + &quot;1. Reload &quot; + io_DateEarly.ToString(&quot;MMM&quot;) + &quot;'&quot; + io_DateEarly.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (Early Date)" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + io_DateEarly.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderEarly + &quot;\&quot; + &quot;1. Reload &quot; + io_DateEarly.ToString(&quot;MMM&quot;) + &quot;'&quot; + io_DateEarly.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
@@ -523,7 +524,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExcelApplicationScope>
-          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (Early)" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + io_DateEarly.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + io_DateEarly.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderEarly + &quot;\&quot; + &quot;1. Reload Recon &quot; + io_DateEarly.ToString(&quot;MMM&quot;) + &quot;'&quot; + io_DateEarly.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (Early)" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + io_DateEarly.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + io_DateEarly.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderEarly + &quot;\&quot; + &quot;1. Reload Recon &quot; + io_DateEarly.ToString(&quot;MMM&quot;) + &quot;'&quot; + io_DateEarly.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
@@ -586,7 +587,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (Latest)" sap:VirtualizedContainerService.HintSize="636,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + io_DateLatest.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderLatest + &quot;\&quot; + &quot;1. Reload &quot; + io_DateLatest.ToString(&quot;MMM&quot;) + &quot;'&quot; + io_DateLatest.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (Latest)" sap:VirtualizedContainerService.HintSize="636,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + io_DateLatest.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderLatest + &quot;\&quot; + &quot;1. Reload &quot; + io_DateLatest.ToString(&quot;MMM&quot;) + &quot;'&quot; + io_DateLatest.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -910,7 +911,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-1)" sap:VirtualizedContainerService.HintSize="636,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021&quot; + &quot;\1. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-1)" sap:VirtualizedContainerService.HintSize="636,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year 2021&quot; + &quot;\1. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -1181,13 +1182,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (Latest)" sap:VirtualizedContainerService.HintSize="636,620" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + io_DateLatest.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + io_DateLatest.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderLatest + &quot;\&quot; + &quot;1. Reload Recon &quot; + io_DateLatest.ToString(&quot;MMM&quot;) + &quot;'&quot; + io_DateLatest.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (Latest)" sap:VirtualizedContainerService.HintSize="636,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + io_DateLatest.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + io_DateLatest.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderLatest + &quot;\&quot; + &quot;1. Reload Recon &quot; + io_DateLatest.ToString(&quot;MMM&quot;) + &quot;'&quot; + io_DateLatest.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,510.4" sap2010:WorkflowViewState.IdRef="Sequence_29">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="DatePre1T2" />
               <Variable x:TypeArguments="x:String" Name="SheetNameT2" />
@@ -1195,8 +1196,8 @@
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
@@ -1241,7 +1242,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="636,968.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="636,968.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>

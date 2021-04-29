@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CreateNewFile" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="856,4076.8" sap2010:WorkflowViewState.IdRef="CreateNewFile_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bew="clr-namespace:BalaReva.Excel.WorkBook;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CreateNewFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bew="clr-namespace:BalaReva.Excel.WorkBook;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>828.8,3928</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CreateNewFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
       <x:String>System.Activities</x:String>
@@ -65,7 +73,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateNewFile" sap:VirtualizedContainerService.HintSize="839.2,4012" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence DisplayName="CreateNewFile" sap:VirtualizedContainerService.HintSize="839.2,3823.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="NextMonth" />
       <Variable x:TypeArguments="x:Boolean" Name="bIPAY" />
@@ -135,9 +143,9 @@
       </Assign.Value>
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="797.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[Now.ToString(&quot;dd&quot;)]" />
-    <If Condition="[LastDay.ToString(&quot;dd&quot;) = Now.ToString(&quot;dd&quot;)]" sap:VirtualizedContainerService.HintSize="797.6,3265.6" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[LastDay.ToString(&quot;dd&quot;) = Now.ToString(&quot;dd&quot;)]" sap:VirtualizedContainerService.HintSize="797.6,3076.8" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="524.8,3116" sap2010:WorkflowViewState.IdRef="Sequence_18">
+        <Sequence sap:VirtualizedContainerService.HintSize="524.8,2927.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Boolean" Name="bChecklist" />
             <Variable x:TypeArguments="x:Boolean" Name="bRecon" />
@@ -147,20 +155,20 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:PathExists DisplayName="Path Exists - Month Reload Checklist" Exists="[bChecklist]" sap:VirtualizedContainerService.HintSize="483.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\1. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth]" PathType="Folder" />
-          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="483.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;1. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth]" />
+          <ui:PathExists DisplayName="Path Exists - Month Reload Checklist" Exists="[bChecklist]" sap:VirtualizedContainerService.HintSize="483.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\1. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth]" PathType="Folder" />
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="483.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;1. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth]" />
           <If Condition="[bChecklist = False]" DisplayName="If - File path month reload checklist " sap:VirtualizedContainerService.HintSize="483.2,230.4" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\1. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth]" />
+              <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\1. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth]" />
             </If.Then>
           </If>
-          <ui:PathExists DisplayName="Path Exists - Month Reload Recon" Exists="[bRecon]" sap:VirtualizedContainerService.HintSize="483.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth]" PathType="Folder" />
+          <ui:PathExists DisplayName="Path Exists - Month Reload Recon" Exists="[bRecon]" sap:VirtualizedContainerService.HintSize="483.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth]" PathType="Folder" />
           <If Condition="[bRecon = False]" DisplayName="If - File path month reload recon" sap:VirtualizedContainerService.HintSize="483.2,230.4" sap2010:WorkflowViewState.IdRef="If_4">
             <If.Then>
-              <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth]" />
+              <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth]" />
             </If.Then>
           </If>
-          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" DisplayName="Copy File - Reload Checklist" sap:VirtualizedContainerService.HintSize="483.2,160" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload.xlsx">
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" DisplayName="Copy File - Reload Checklist" sap:VirtualizedContainerService.HintSize="483.2,160" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload.xlsx&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -168,7 +176,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CopyFile>
-          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" DisplayName="Copy File - Reload Recon" sap:VirtualizedContainerService.HintSize="483.2,160" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon.xlsx">
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" DisplayName="Copy File - Reload Recon" sap:VirtualizedContainerService.HintSize="483.2,160" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon.xlsx&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -176,7 +184,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CopyFile>
-          <Sequence DisplayName="Sequence - Reload Checklist" sap:VirtualizedContainerService.HintSize="483.2,585.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence DisplayName="Sequence - Reload Checklist" sap:VirtualizedContainerService.HintSize="483.2,271.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
             <Sequence.Variables>
               <Variable x:TypeArguments="s:DateTime" Name="strChecklist" />
             </Sequence.Variables>
@@ -186,16 +194,16 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,492.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+            <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
               <ui:ExcelApplicationScope.Body>
                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,383.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -220,7 +228,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelApplicationScope>
           </Sequence>
-          <Sequence DisplayName="Sequence - Reload Recon" sap:VirtualizedContainerService.HintSize="483.2,145.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence DisplayName="Sequence - Reload Recon" sap:VirtualizedContainerService.HintSize="483.2,271.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <Sequence.Variables>
               <Variable x:TypeArguments="s:DateTime" Name="strRecon" />
             </Sequence.Variables>
@@ -230,16 +238,16 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+            <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
               <ui:ExcelApplicationScope.Body>
                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,664.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -260,19 +268,19 @@
               </ui:ExcelApplicationScope.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelApplicationScope>
           </Sequence>
-          <bew:RenameSheet FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon IPAY" ExecutionResult="[bIPAY]" FilePath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_12" NewSheetName="[NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot; IPAY&quot;]" SheetName=" IPAY" />
-          <bew:RenameSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon CIMB" FilePath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_13" NewSheetName="[NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot; CIMB  &quot;]" SheetName=" CIMB  " />
-          <bew:RenameSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon MOL" FilePath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_14" NewSheetName="[NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot; MOL&quot;]" SheetName=" MOL" />
-          <bew:RenameSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon MBB" FilePath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_15" NewSheetName="[NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot; MBB&quot;]" SheetName=" MBB" />
-          <bew:RenameSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon Bank" FilePath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_16" NewSheetName="[&quot;Bank &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;)]" SheetName="Bank" />
-          <ui:MoveFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\1. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth]" DisplayName="Move File - Reload Checklist" sap:VirtualizedContainerService.HintSize="483.2,160" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" />
-          <ui:MoveFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth]" DisplayName="Move File - Reload Recon" sap:VirtualizedContainerService.HintSize="483.2,160" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" />
+          <bew:RenameSheet FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon IPAY" ExecutionResult="[bIPAY]" FilePath="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_12" NewSheetName="[NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot; IPAY&quot;]" SheetName=" IPAY" />
+          <bew:RenameSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon CIMB" FilePath="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_13" NewSheetName="[NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot; CIMB  &quot;]" SheetName=" CIMB  " />
+          <bew:RenameSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon MOL" FilePath="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_14" NewSheetName="[NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot; MOL&quot;]" SheetName=" MOL" />
+          <bew:RenameSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon MBB" FilePath="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_15" NewSheetName="[NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot; MBB&quot;]" SheetName=" MBB" />
+          <bew:RenameSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Rename Work Sheet - Reload Recon Bank" FilePath="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="483.2,69.6" sap2010:WorkflowViewState.IdRef="RenameSheet_16" NewSheetName="[&quot;Bank &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;)]" SheetName="Bank" />
+          <ui:MoveFile ContinueOnError="{x:Null}" Destination="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\1. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + FolderMonth]" DisplayName="Move File - Reload Checklist" sap:VirtualizedContainerService.HintSize="483.2,160" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" />
+          <ui:MoveFile ContinueOnError="{x:Null}" Destination="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + NextMonth.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + FolderMonth]" DisplayName="Move File - Reload Recon" sap:VirtualizedContainerService.HintSize="483.2,160" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;RPA_TEMPLATE\1. Reload Recon &quot; + NextMonth.ToString(&quot;MMM&quot;) + &quot;'&quot; + NextMonth.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>

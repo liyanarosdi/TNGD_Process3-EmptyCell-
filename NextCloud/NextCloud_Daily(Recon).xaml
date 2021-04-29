@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="io_FolderMonth" Type="InArgument(x:String)" />
     <x:Property Name="in_DateT1" Type="InArgument(s:DateTime)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>958,3425</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>894.4,2707.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>NextCloud_Extract_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -73,7 +74,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="NextCloud_Extract" sap:VirtualizedContainerService.HintSize="713,3320" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="NextCloud_Extract" sap:VirtualizedContainerService.HintSize="904.8,2602.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="DateT1" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtHeader" />
@@ -117,8 +118,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="671,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Open update daily nextcloud&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="671,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="863.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Open update daily nextcloud&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="863.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[DateT1]</OutArgument>
       </Assign.To>
@@ -126,13 +127,13 @@
         <InArgument x:TypeArguments="x:String">[in_DateT1.ToString("yyyy-MM-dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="671,788" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="863.2,655.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,679" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,545.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="DatePre1" />
               <Variable x:TypeArguments="x:String" Name="SheetName" />
@@ -145,7 +146,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_46">
@@ -182,23 +183,29 @@
                   </ui:AssignOperation>
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
-            <ui:ExcelReadCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" PreserveFormat="True" SheetName="[SheetName  + &quot; IPAY&quot;]">
+            <ui:ExcelReadCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" PreserveFormat="True" SheetName="[SheetName  + &quot; IPAY&quot;]">
               <ui:ExcelReadCell.Result>
                 <OutArgument x:TypeArguments="x:String">[bIpayB]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
-            <ui:ExcelReadCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" PreserveFormat="True" SheetName="[SheetName  + &quot; MOL&quot;]">
+            <ui:ExcelReadCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" PreserveFormat="True" SheetName="[SheetName  + &quot; MOL&quot;]">
               <ui:ExcelReadCell.Result>
                 <OutArgument x:TypeArguments="x:String">[bMolB]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
-            <ui:ExcelReadCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" PreserveFormat="True" SheetName="[SheetName  + &quot; MBB&quot;]">
+            <ui:ExcelReadCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" PreserveFormat="True" SheetName="[SheetName  + &quot; MBB&quot;]">
               <ui:ExcelReadCell.Result>
                 <OutArgument x:TypeArguments="x:String">[bMbbB]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
-            <ui:ExcelReadCell Cell="[&quot;C&quot; + IndexColCIMB.ToString]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" PreserveFormat="True" SheetName="[SheetName  + &quot; CIMB  &quot;]">
+            <ui:ExcelReadCell Cell="[&quot;C&quot; + IndexColCIMB.ToString]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" PreserveFormat="True" SheetName="[SheetName  + &quot; CIMB  &quot;]">
               <ui:ExcelReadCell.Result>
                 <OutArgument x:TypeArguments="x:String">[bCimbC]</OutArgument>
               </ui:ExcelReadCell.Result>
@@ -213,22 +220,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <If Condition="[bIpayB.ToString.Trim = &quot;-&quot; Or bCimbC.ToString.Trim = &quot;-&quot; Or bMolB.ToString.Trim = &quot;-&quot; Or bMbbB.ToString.Trim = &quot;-&quot;]" sap:VirtualizedContainerService.HintSize="671,1947" sap2010:WorkflowViewState.IdRef="If_6">
+    <If Condition="[bIpayB.ToString.Trim = &quot;-&quot; Or bCimbC.ToString.Trim = &quot;-&quot; Or bMolB.ToString.Trim = &quot;-&quot; Or bMbbB.ToString.Trim = &quot;-&quot;]" sap:VirtualizedContainerService.HintSize="863.2,1356" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="526,1799" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence sap:VirtualizedContainerService.HintSize="719.2,1206.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 0" sap:VirtualizedContainerService.HintSize="484,175" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_0&quot; + &quot;.csv&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 0" sap:VirtualizedContainerService.HintSize="677.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_0&quot; + &quot;.csv&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="dtMain0" />
                   </Sequence.Variables>
@@ -434,13 +441,13 @@
               </ActivityAction>
             </ui:ExcelApplicationScope.Body>
           </ui:ExcelApplicationScope>
-          <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 1" sap:VirtualizedContainerService.HintSize="484,175" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_1&quot; + &quot;.csv&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 1" sap:VirtualizedContainerService.HintSize="677.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_1&quot; + &quot;.csv&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="dtMain1" />
                   </Sequence.Variables>
@@ -653,16 +660,16 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExcelApplicationScope>
-          <ui:PathExists DisplayName="Path Exists" Exists="[bStat2]" sap:VirtualizedContainerService.HintSize="484,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_2&quot; + &quot;.csv&quot;]" PathType="File" />
-          <If Condition="[bStat2 = True]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_1">
+          <ui:PathExists DisplayName="Path Exists" Exists="[bStat2]" sap:VirtualizedContainerService.HintSize="677.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_2&quot; + &quot;.csv&quot;]" PathType="File" />
+          <If Condition="[bStat2 = True]" sap:VirtualizedContainerService.HintSize="677.6,328" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
-              <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 2" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_2&quot; + &quot;.csv&quot;]">
+              <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Split 2" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  io_FolderMonth + &quot;\&quot; + DateT1 + &quot;\successful-transaction-details-&quot; + DateT1 + &quot;_2&quot; + &quot;.csv&quot;]">
                 <ui:ExcelApplicationScope.Body>
                   <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="sd:DataTable" Name="dtMain2" />
                       </Sequence.Variables>
@@ -1004,14 +1011,14 @@
                 </ui:ExcelApplicationScope.Body>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ExcelApplicationScope>
             </If.Then>
             <If.Else>
-              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
@@ -1121,13 +1128,13 @@
               </ui:MultipleAssign>
             </If.Else>
           </If>
-          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="484,900" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="677.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,791" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="DatePre1" />
                     <Variable x:TypeArguments="x:String" Name="SheetName" />
@@ -1136,11 +1143,11 @@
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,192.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
@@ -1178,10 +1185,10 @@
                       </scg:List>
                     </ui:MultipleAssign.AssignOperations>
                   </ui:MultipleAssign>
-                  <ui:ExcelWriteCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Write Cell -  Sheet IPAY, Column B" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="[SheetName  + &quot; IPAY&quot;]" Text="[TotlaE01.ToString]" />
-                  <ui:ExcelWriteCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Write Cell -  Sheet MOL, Column B" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[SheetName  + &quot; MOL&quot;]" Text="[TotalE60.ToString]" />
-                  <ui:ExcelWriteCell Cell="[&quot;C&quot; + IndexColCIMB.ToString]" DisplayName="Write Cell -  Sheet CIMB, Column C" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="[SheetName  + &quot; CIMB  &quot;]" Text="[TotalE54.ToString]" />
-                  <ui:ExcelWriteCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Write Cell -  Sheet MBB, Column B" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="[SheetName  + &quot; MBB&quot;]" Text="[Total128.ToString]" />
+                  <ui:ExcelWriteCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Write Cell -  Sheet IPAY, Column B" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="[SheetName  + &quot; IPAY&quot;]" Text="[TotlaE01.ToString]" />
+                  <ui:ExcelWriteCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Write Cell -  Sheet MOL, Column B" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[SheetName  + &quot; MOL&quot;]" Text="[TotalE60.ToString]" />
+                  <ui:ExcelWriteCell Cell="[&quot;C&quot; + IndexColCIMB.ToString]" DisplayName="Write Cell -  Sheet CIMB, Column C" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="[SheetName  + &quot; CIMB  &quot;]" Text="[TotalE54.ToString]" />
+                  <ui:ExcelWriteCell Cell="[&quot;B&quot; + IndexColBank.ToString]" DisplayName="Write Cell -  Sheet MBB, Column B" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="[SheetName  + &quot; MBB&quot;]" Text="[Total128.ToString]" />
                 </Sequence>
               </ActivityAction>
             </ui:ExcelApplicationScope.Body>
@@ -1195,15 +1202,15 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="671,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out - NOT USE" sap:VirtualizedContainerService.HintSize="863.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,531" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,535.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,439" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,442.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -1314,6 +1321,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="671,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Close update daily nextcloud&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="863.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Close update daily nextcloud&quot;]" />
   </Sequence>
 </Activity>
