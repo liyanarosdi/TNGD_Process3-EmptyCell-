@@ -145,7 +145,7 @@
         <InArgument x:TypeArguments="x:String">[Montht1 + ". " + in_DateT1.ToString("MMM") + "'" + in_DateT1.ToString("yy")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:PathExists DisplayName="Path Exists - Month Successfull transaction" Exists="[bMonth]" sap:VirtualizedContainerService.HintSize="1055.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess]" PathType="Folder" />
+    <ui:PathExists DisplayName="Path Exists - Month Successfull transaction" Exists="[bMonth]" sap:VirtualizedContainerService.HintSize="1055.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;8. Reload - Daily eWallet Successful Transaction\1. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; +  FileSuccess]" PathType="Folder" />
     <If Condition="[bMonth = False]" DisplayName="If - File path Month" sap:VirtualizedContainerService.HintSize="1055.2,230.4" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
