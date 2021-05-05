@@ -16,7 +16,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1463.2,6896.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1599.2,7357.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CIMB_StatementYear_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="36">
@@ -92,9 +92,10 @@
       <AssemblyReference>BalaReva.Excel</AssemblyReference>
       <AssemblyReference>BalaReva.Excel.Base</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CIMB_StatementYear" sap:VirtualizedContainerService.HintSize="1473.6,6792" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CIMB_StatementYear" sap:VirtualizedContainerService.HintSize="1609.6,7252.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CurrDate" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtFilterCIMB" />
@@ -126,9 +127,10 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1432,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start CIMB_StatementYear&quot;]" />
-    <ui:PathExists DisplayName="Path Exists - Month CIMB statement" Exists="[bCIMBStat]" sap:VirtualizedContainerService.HintSize="1432,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;12. CIMB Bank Statement\CIMB Bank Statement Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_CurrDateT1 + &quot;. &quot; + &quot;CIMB Bank Statement Collection - &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;)+ &quot;.xlsx&quot;]" PathType="File" />
-    <If Condition="[bCIMBStat = False]" DisplayName="If - File path month CIMB Statement" sap:VirtualizedContainerService.HintSize="1432,6303.2" sap2010:WorkflowViewState.IdRef="If_4">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1568,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start CIMB_StatementYear&quot;]" />
+    <ui:PathExists DisplayName="Path Exists - Month CIMB statement" Exists="[bCIMBStat]" sap:VirtualizedContainerService.HintSize="1568,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;12. CIMB Bank Statement\CIMB Bank Statement Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_CurrDateT1 + &quot;. &quot; + &quot;CIMB Bank Statement Collection - &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;)+ &quot;.xlsx&quot;]" PathType="File" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1568,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[in_Config(&quot;File_Path&quot;).ToString + &quot;12. CIMB Bank Statement\CIMB Bank Statement Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_CurrDateT1 + &quot;. &quot; + &quot;CIMB Bank Statement Collection - &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;)+ &quot;.xlsx&quot;]" />
+    <If Condition="[bCIMBStat = False]" DisplayName="If - File path month CIMB Statement" sap:VirtualizedContainerService.HintSize="1568,6631.2" sap2010:WorkflowViewState.IdRef="If_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -148,46 +150,50 @@
               <OutArgument x:TypeArguments="x:String">[Msg]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["File CIMB statement not exist" + in_DateT1.ToString("dd/MM/yyy")]</InArgument>
+              <InArgument x:TypeArguments="x:String">["File CIMB statement not exist " + in_DateT1.ToString("dd/MM/yyy")]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DingTalk_Open workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DingTalk\DingTalk_Open.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_Msg">[Msg]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Msg">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Msg" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="1012.8,6153.6" sap2010:WorkflowViewState.IdRef="Sequence_26">
+        <Sequence sap:VirtualizedContainerService.HintSize="1148.8,6481.6" sap2010:WorkflowViewState.IdRef="Sequence_26">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[io_statCimb = True]" sap:VirtualizedContainerService.HintSize="971.2,2201.6" sap2010:WorkflowViewState.IdRef="If_18">
+          <If Condition="[io_statCimb = True]" sap:VirtualizedContainerService.HintSize="1107.2,2622.4" sap2010:WorkflowViewState.IdRef="If_18">
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="827.2,2052" sap2010:WorkflowViewState.IdRef="Sequence_50">
+              <Sequence sap:VirtualizedContainerService.HintSize="963.2,2472.8" sap2010:WorkflowViewState.IdRef="Sequence_50">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="785.6,1959.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_13" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_DateN1.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + io_FolderN1 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateN1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateN1.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
+                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="921.6,2380" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_13" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_DateN1.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + io_FolderN1 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateN1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateN1.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
                   <ui:ExcelApplicationScope.Body>
                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="752,1849.6" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="888,2270.4" sap2010:WorkflowViewState.IdRef="Sequence_75">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="Sequence - CIMB" sap:VirtualizedContainerService.HintSize="710.4,1756.8" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                        <Sequence DisplayName="Sequence - CIMB" sap:VirtualizedContainerService.HintSize="846.4,2177.6" sap2010:WorkflowViewState.IdRef="Sequence_74">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="sd:DataTable" Name="dtCIMB" />
                             <Variable x:TypeArguments="x:Int32" Name="IndexCIMB" />
@@ -203,14 +209,14 @@
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExcelReadRange AddHeaders="True" DataTable="[dtCIMB]" DisplayName="Read Range - Sheect CIMB" sap:VirtualizedContainerService.HintSize="668.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_20" SheetName="CIMB">
+                          <ui:ExcelReadRange AddHeaders="True" DataTable="[dtCIMB]" DisplayName="Read Range - Sheect CIMB" sap:VirtualizedContainerService.HintSize="804.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_20" SheetName="CIMB">
                             <ui:ExcelReadRange.Range>
                               <InArgument x:TypeArguments="x:String">
                                 <Literal x:TypeArguments="x:String" Value="" />
                               </InArgument>
                             </ui:ExcelReadRange.Range>
                           </ui:ExcelReadRange>
-                          <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="[IndexCIMB]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="668.8,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[dtCIMB.Columns]">
+                          <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="[IndexCIMB]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="804.8,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[dtCIMB.Columns]">
                             <ui:ForEach.Body>
                               <ActivityAction x:TypeArguments="sd:DataColumn">
                                 <ActivityAction.Argument>
@@ -351,17 +357,17 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:ForEach>
-                          <ui:ExcelReadCell Cell="[ColumnName + &quot;13&quot;]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="668.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_16" PreserveFormat="True" SheetName="CIMB">
+                          <ui:ExcelReadCell Cell="[ColumnName + &quot;13&quot;]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="804.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_16" PreserveFormat="True" SheetName="CIMB">
                             <ui:ExcelReadCell.Result>
                               <OutArgument x:TypeArguments="x:String">[Cimb13]</OutArgument>
                             </ui:ExcelReadCell.Result>
                           </ui:ExcelReadCell>
-                          <ui:ExcelReadCell Cell="[ColumnName + &quot;16&quot;]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="668.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_17" PreserveFormat="True" SheetName="CIMB">
+                          <ui:ExcelReadCell Cell="[ColumnName + &quot;16&quot;]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="804.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_17" PreserveFormat="True" SheetName="CIMB">
                             <ui:ExcelReadCell.Result>
                               <OutArgument x:TypeArguments="x:String">[Cimb16]</OutArgument>
                             </ui:ExcelReadCell.Result>
                           </ui:ExcelReadCell>
-                          <If Condition="[System.Text.RegularExpressions.Regex.IsMatch(Cimb13, “\d+(?:[.,]\d+)*”) Or System.Text.RegularExpressions.Regex.IsMatch(Cimb16, “\d+(?:[.,]\d+)*”)]" DisplayName="If -700195 CIMB Row 13 (T-2)" sap:VirtualizedContainerService.HintSize="668.8,1271.2" sap2010:WorkflowViewState.IdRef="If_30">
+                          <If Condition="[System.Text.RegularExpressions.Regex.IsMatch(Cimb13, “\d+(?:[.,]\d+)*”) Or System.Text.RegularExpressions.Regex.IsMatch(Cimb16, “\d+(?:[.,]\d+)*”)]" DisplayName="If -700195 CIMB Row 13 (T-2)" sap:VirtualizedContainerService.HintSize="804.8,1692" sap2010:WorkflowViewState.IdRef="If_30">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -369,14 +375,14 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Else>
-                              <Sequence sap:VirtualizedContainerService.HintSize="524.8,1121.6" sap2010:WorkflowViewState.IdRef="Sequence_76">
+                              <Sequence sap:VirtualizedContainerService.HintSize="660.8,1542.4" sap2010:WorkflowViewState.IdRef="Sequence_76">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - CIMB" sap:VirtualizedContainerService.HintSize="483.2,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;12. CIMB Bank Statement\CIMB Bank Statement Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_CurrDateT1 + &quot;. &quot; + &quot;CIMB Bank Statement Collection - &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;)+ &quot;.xlsx&quot;]">
+                                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - CIMB" sap:VirtualizedContainerService.HintSize="619.2,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;12. CIMB Bank Statement\CIMB Bank Statement Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\&quot; + io_CurrDateT1 + &quot;. &quot; + &quot;CIMB Bank Statement Collection - &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;)+ &quot;.xlsx&quot;]">
                                   <ui:ExcelApplicationScope.Body>
                                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                       <ActivityAction.Argument>
@@ -483,7 +489,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:ExcelApplicationScope>
-                                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - CIMB Additional excel" sap:VirtualizedContainerService.HintSize="483.2,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;CIMB.xlsx&quot;]">
+                                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - CIMB Additional excel" sap:VirtualizedContainerService.HintSize="619.2,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;CIMB.xlsx&quot;]">
                                   <ui:ExcelApplicationScope.Body>
                                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                       <ActivityAction.Argument>
@@ -785,7 +791,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:ExcelApplicationScope>
-                                <If Condition="[bCIMB = True Or bCIMB203 = True]" sap:VirtualizedContainerService.HintSize="483.2,218.4" sap2010:WorkflowViewState.IdRef="If_10">
+                                <If Condition="[bCIMB = True Or bCIMB203 = True]" sap:VirtualizedContainerService.HintSize="619.2,639.2" sap2010:WorkflowViewState.IdRef="If_10">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -793,20 +799,20 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <If.Then>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="475.2,489.6" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - CIMB Additional excel (Hide Column)" sap:VirtualizedContainerService.HintSize="434,177" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" Visible="False" WorkbookPath="C:\Users\rpavendor\Desktop\RPATEST\Process 3\CIMB.xlsx">
+                                      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - CIMB Additional excel (Hide Column)" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" Visible="False" WorkbookPath="C:\Users\rpavendor\Desktop\RPATEST\Process 3\CIMB.xlsx">
                                         <ui:ExcelApplicationScope.Body>
                                           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                             </ActivityAction.Argument>
-                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                               <Sequence.Variables>
                                                 <Variable x:TypeArguments="x:String" Name="LastRowCIMB" />
                                               </Sequence.Variables>
@@ -843,13 +849,13 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:ExcelApplicationScope>
-                                      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="434,177" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
+                                      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Recon (T-1)" sap:VirtualizedContainerService.HintSize="433.6,178.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot;\2. Reload &quot; + in_DateT1.ToString(&quot;yyyy&quot;) + &quot; Recon\&quot; + io_FolderMonth + &quot;\&quot; + &quot;1. Reload Recon &quot; + in_DateT1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateT1.ToString(&quot;yy&quot;) + &quot;.xlsx&quot;]">
                                         <ui:ExcelApplicationScope.Body>
                                           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                             </ActivityAction.Argument>
-                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_24">
                                               <Sequence.Variables>
                                                 <Variable x:TypeArguments="x:String" Name="SheetName" />
                                                 <Variable x:TypeArguments="sd:DataTable" Name="dtBank" />
@@ -921,7 +927,7 @@
                                     </Sequence>
                                   </If.Then>
                                 </If>
-                                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="483.2,271.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_11" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_DateN1.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + io_FolderN1 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateN1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateN1.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
+                                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="619.2,271.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_11" InstanceCachePeriod="3000" WorkbookPath="[in_Config(&quot;File_Path&quot;).ToString + &quot;9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_DateN1.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + io_FolderN1 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateN1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateN1.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
                                   <ui:ExcelApplicationScope.Body>
                                     <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                       <ActivityAction.Argument>
@@ -1129,7 +1135,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:ExcelApplicationScope>
-                                <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - CIMB (T-1)" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="Delete_8" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;CIMB.xlsx&quot;]" />
+                                <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - CIMB (T-1)" sap:VirtualizedContainerService.HintSize="619.2,22.4" sap2010:WorkflowViewState.IdRef="Delete_8" Path="[in_Config(&quot;File_Path&quot;).ToString + &quot;CIMB.xlsx&quot;]" />
                               </Sequence>
                             </If.Else>
                           </If>
@@ -1147,7 +1153,7 @@
               </Sequence>
             </If.Then>
           </If>
-          <If Condition="[io_statIpay = True]" sap:VirtualizedContainerService.HintSize="971.2,1843.2" sap2010:WorkflowViewState.IdRef="If_27">
+          <If Condition="[io_statIpay = True]" sap:VirtualizedContainerService.HintSize="1107.2,1843.2" sap2010:WorkflowViewState.IdRef="If_27">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="777.6,1693.6" sap2010:WorkflowViewState.IdRef="Sequence_68">
                 <sap:WorkflowViewStateService.ViewState>
@@ -1253,7 +1259,7 @@
                                             <InArgument x:TypeArguments="x:Int32">[IndexIPAY88 + 1]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        <ui:InterruptibleWhile Condition="[IndexIPAY88 &gt; 0]" DisplayName="While" sap:VirtualizedContainerService.HintSize="339.2,520" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_8">
+                                        <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="339.2,520" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_8">
                                           <ui:InterruptibleWhile.Body>
                                             <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,352.8" sap2010:WorkflowViewState.IdRef="Sequence_77">
                                               <sap:WorkflowViewStateService.ViewState>
@@ -1287,6 +1293,9 @@
                                               </Assign>
                                             </Sequence>
                                           </ui:InterruptibleWhile.Body>
+                                          <ui:InterruptibleWhile.Condition>
+                                            <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="IndexIPAY88 &gt; 0" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                                          </ui:InterruptibleWhile.Condition>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1682,7 +1691,7 @@
               </Sequence>
             </If.Then>
           </If>
-          <If Condition="[io_statMol = True]" sap:VirtualizedContainerService.HintSize="971.2,1843.2" sap2010:WorkflowViewState.IdRef="If_28">
+          <If Condition="[io_statMol = True]" sap:VirtualizedContainerService.HintSize="1107.2,1843.2" sap2010:WorkflowViewState.IdRef="If_28">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="777.6,1693.6" sap2010:WorkflowViewState.IdRef="Sequence_69">
                 <sap:WorkflowViewStateService.ViewState>
@@ -2206,382 +2215,9 @@
               </Sequence>
             </If.Then>
           </If>
-          <ui:CommentOut DisplayName="Comment Out - NOT USE (OLD)" sap:VirtualizedContainerService.HintSize="971.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_8">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="475.2,469.6" sap2010:WorkflowViewState.IdRef="Sequence_67">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Reload Checklist (T-2)" sap:VirtualizedContainerService.HintSize="434,377" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_12" InstanceCachePeriod="3000" WorkbookPath="[&quot;C:\Users\rpavendor\Desktop\RPATEST\Process 3\9. Reload - Daily Check List\4. Year 2021\1. Reload &quot; + in_DateN1.ToString(&quot;yyyy&quot;) + &quot; Checklist\&quot; + io_FolderN1 + &quot;\&quot; + &quot;1. Reload &quot; + in_DateN1.ToString(&quot;MMM&quot;) + &quot;'&quot; + in_DateN1.ToString(&quot;yy&quot;) +&quot;.xlsx&quot;]">
-                  <ui:ExcelApplicationScope.Body>
-                    <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,268" sap2010:WorkflowViewState.IdRef="Sequence_66">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="Sequence - CIMB" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_61">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="sd:DataTable" Name="dtCIMB" />
-                            <Variable x:TypeArguments="x:Int32" Name="IndexCIMB" />
-                            <Variable x:TypeArguments="x:Int32" Name="ModuloCIMB" />
-                            <Variable x:TypeArguments="x:String" Name="ColumnName" />
-                            <Variable x:TypeArguments="s:String[]" Name="DayCIMBT2" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExcelReadRange AddHeaders="True" DataTable="[dtCIMB]" DisplayName="Read Range - Sheect CIMB" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_18" SheetName="CIMB">
-                            <ui:ExcelReadRange.Range>
-                              <InArgument x:TypeArguments="x:String">
-                                <Literal x:TypeArguments="x:String" Value="" />
-                              </InArgument>
-                            </ui:ExcelReadRange.Range>
-                          </ui:ExcelReadRange>
-                          <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="[IndexCIMB]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[dtCIMB.Columns]">
-                            <ui:ForEach.Body>
-                              <ActivityAction x:TypeArguments="sd:DataColumn">
-                                <ActivityAction.Argument>
-                                  <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="item" />
-                                </ActivityAction.Argument>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,614.4" sap2010:WorkflowViewState.IdRef="Sequence_60">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[item.ColumnName]" />
-                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="483.2,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
-                                    <ui:MultipleAssign.AssignOperations>
-                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
-                                          <ui:AssignOperation.To>
-                                            <OutArgument x:TypeArguments="s:String[]">[DayCIMBT2]</OutArgument>
-                                          </ui:AssignOperation.To>
-                                          <ui:AssignOperation.Value>
-                                            <InArgument x:TypeArguments="s:String[]">[Split(item.ColumnName.ToString,“ ”)]</InArgument>
-                                          </ui:AssignOperation.Value>
-                                        </ui:AssignOperation>
-                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
-                                          <ui:AssignOperation.To>
-                                            <OutArgument x:TypeArguments="s:String[]">[DayCIMBT2]</OutArgument>
-                                          </ui:AssignOperation.To>
-                                          <ui:AssignOperation.Value>
-                                            <InArgument x:TypeArguments="s:String[]">[DayCIMBT2.Select(Function(d) If(IsDate(d), Convert.ToDateTime(d).ToString("ddMMyy"), d) ).ToArray]</InArgument>
-                                          </ui:AssignOperation.Value>
-                                        </ui:AssignOperation>
-                                      </scg:List>
-                                    </ui:MultipleAssign.AssignOperations>
-                                  </ui:MultipleAssign>
-                                  <If Condition="[DayCIMBT2(0) = in_DateN1.ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-2)" sap:VirtualizedContainerService.HintSize="483.2,218.4" sap2010:WorkflowViewState.IdRef="If_22">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <If.Then>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_59">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <Assign DisplayName="Assign - Index" sap:VirtualizedContainerService.HintSize="339.2,60" sap2010:WorkflowViewState.IdRef="Assign_56">
-                                          <Assign.To>
-                                            <OutArgument x:TypeArguments="x:Int32">[IndexCIMB]</OutArgument>
-                                          </Assign.To>
-                                          <Assign.Value>
-                                            <InArgument x:TypeArguments="x:Int32">[IndexCIMB + 1]</InArgument>
-                                          </Assign.Value>
-                                        </Assign>
-                                        <ui:InterruptibleWhile Condition="[IndexCIMB &gt; 0]" DisplayName="While" sap:VirtualizedContainerService.HintSize="339.2,520" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_5">
-                                          <ui:InterruptibleWhile.Body>
-                                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,352.8" sap2010:WorkflowViewState.IdRef="Sequence_57">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <Assign DisplayName="Assign - Modulo" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_57">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:Int32">[ModuloCIMB]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:Int32">[( IndexCIMB - 1) mod 26]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                              <Assign DisplayName="Assign - Column Name" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_58">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[ColumnName]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[Convert.ToChar(65+ModuloCIMB).ToString + ColumnName]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                              <Assign DisplayName="Assign - Column Index" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_59">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:Int32">[IndexCIMB]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:Int32">[cint((IndexCIMB-ModuloCIMB) / 26)]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                            </Sequence>
-                                          </ui:InterruptibleWhile.Body>
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:InterruptibleWhile>
-                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="339.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_7">
-                                          <ui:CommentOut.Body>
-                                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_58">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_60">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[ColumnName]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[Convert.ToChar(Convert.ToUInt16("A"c)+IndexCIMBT1) + Convert.ToChar(Convert.ToUInt16("A"c)+IndexCIMBT1)]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                            </Sequence>
-                                          </ui:CommentOut.Body>
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:CommentOut>
-                                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="339.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[ColumnName + &quot; is the column Letter&quot;]" />
-                                      </Sequence>
-                                    </If.Then>
-                                  </If>
-                                </Sequence>
-                              </ActivityAction>
-                            </ui:ForEach.Body>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:ForEach>
-                          <If Condition="[bCIMB = True]" DisplayName="If -700195 CIMB Row 13 (T-2)" sap:VirtualizedContainerService.HintSize="483.2,237.6" sap2010:WorkflowViewState.IdRef="If_23">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <If.Then>
-                              <ui:ExcelWriteCell Cell="[ColumnName + &quot;13&quot;]" DisplayName="Write Cell - 700195 CIMB Row 13 (T-2)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="CIMB" Text="[ValueH195.ToString]" />
-                            </If.Then>
-                          </If>
-                          <If Condition="[bCIMB203 = True]" DisplayName="If - 700203 CIMB Row 16 (T-2)" sap:VirtualizedContainerService.HintSize="483.2,237.6" sap2010:WorkflowViewState.IdRef="If_24">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <If.Then>
-                              <ui:ExcelWriteCell Cell="[ColumnName + &quot;16&quot;]" DisplayName="Write Cell - 700203 CIMB Row 16 (T-2)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="CIMB" Text="[ValueH203.ToString]" />
-                            </If.Then>
-                          </If>
-                        </Sequence>
-                        <Sequence DisplayName="Sequence - iPAY88" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_65">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="sd:DataTable" Name="dtIPAY88" />
-                            <Variable x:TypeArguments="x:Int32" Name="IndexIPAY88" />
-                            <Variable x:TypeArguments="x:Int32" Name="ModuloIPAY88" />
-                            <Variable x:TypeArguments="x:String" Name="ColIPAY88" />
-                            <Variable x:TypeArguments="s:String[]" Name="DayIPayT2" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExcelReadRange AddHeaders="True" DataTable="[dtIPAY88]" DisplayName="Read Range - Sheet IPAY88" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_19" SheetName="IPAY88">
-                            <ui:ExcelReadRange.Range>
-                              <InArgument x:TypeArguments="x:String">
-                                <Literal x:TypeArguments="x:String" Value="" />
-                              </InArgument>
-                            </ui:ExcelReadRange.Range>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:ExcelReadRange>
-                          <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="[IndexIPAY88]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[dtIPAY88.Columns]">
-                            <ui:ForEach.Body>
-                              <ActivityAction x:TypeArguments="sd:DataColumn">
-                                <ActivityAction.Argument>
-                                  <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="item" />
-                                </ActivityAction.Argument>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,448.8" sap2010:WorkflowViewState.IdRef="Sequence_64">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[item.ColumnName]" />
-                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
-                                    <ui:MultipleAssign.AssignOperations>
-                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
-                                          <ui:AssignOperation.To>
-                                            <OutArgument x:TypeArguments="s:String[]">[DayIPayT2]</OutArgument>
-                                          </ui:AssignOperation.To>
-                                          <ui:AssignOperation.Value>
-                                            <InArgument x:TypeArguments="s:String[]">[Split(item.ColumnName.ToString,“ ”)]</InArgument>
-                                          </ui:AssignOperation.Value>
-                                        </ui:AssignOperation>
-                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
-                                          <ui:AssignOperation.To>
-                                            <OutArgument x:TypeArguments="s:String[]">[DayIPayT2]</OutArgument>
-                                          </ui:AssignOperation.To>
-                                          <ui:AssignOperation.Value>
-                                            <InArgument x:TypeArguments="s:String[]">[DayIPayT2.Select(Function(d) If(IsDate(d), Convert.ToDateTime(d).ToString("ddMMyy"), d) ).ToArray]</InArgument>
-                                          </ui:AssignOperation.Value>
-                                        </ui:AssignOperation>
-                                      </scg:List>
-                                    </ui:MultipleAssign.AssignOperations>
-                                  </ui:MultipleAssign>
-                                  <If Condition="[DayIPayT2(0) = in_DateN1.ToString(&quot;ddMMyy&quot;)]" DisplayName="If - Check column date (T-2)" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_25">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <If.Then>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="380.8,815.2" sap2010:WorkflowViewState.IdRef="Sequence_63">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <Assign DisplayName="Assign - Index" sap:VirtualizedContainerService.HintSize="339.2,60" sap2010:WorkflowViewState.IdRef="Assign_61">
-                                          <Assign.To>
-                                            <OutArgument x:TypeArguments="x:Int32">[IndexIPAY88]</OutArgument>
-                                          </Assign.To>
-                                          <Assign.Value>
-                                            <InArgument x:TypeArguments="x:Int32">[IndexIPAY88 + 1]</InArgument>
-                                          </Assign.Value>
-                                        </Assign>
-                                        <ui:InterruptibleWhile Condition="[IndexIPAY88 &gt; 0]" DisplayName="While" sap:VirtualizedContainerService.HintSize="339.2,520" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_6">
-                                          <ui:InterruptibleWhile.Body>
-                                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,352.8" sap2010:WorkflowViewState.IdRef="Sequence_62">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <Assign DisplayName="Assign - Modulo" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_62">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:Int32">[ModuloIPAY88]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:Int32">[(IndexIPAY88 - 1) mod 26]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                              <Assign DisplayName="Assign - Column Name" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_63">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[ColIPAY88]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[Convert.ToChar(65+ModuloIPAY88).ToString + ColIPAY88]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                              <Assign DisplayName="Assign - Column Index" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_64">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:Int32">[IndexIPAY88]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:Int32">[cint((IndexIPAY88-ModuloIPAY88) / 26)]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                            </Sequence>
-                                          </ui:InterruptibleWhile.Body>
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:InterruptibleWhile>
-                                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="339.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_16" Text="[ColIPAY88 + &quot; is the column Letter&quot;]" />
-                                      </Sequence>
-                                    </If.Then>
-                                  </If>
-                                </Sequence>
-                              </ActivityAction>
-                            </ui:ForEach.Body>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:ForEach>
-                          <If Condition="[bIpay = True]" sap:VirtualizedContainerService.HintSize="483.2,237.6" sap2010:WorkflowViewState.IdRef="If_26">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <If.Then>
-                              <ui:ExcelWriteCell Cell="[ColIPAY88 + &quot;7&quot;]" DisplayName="Write Cell - IPAY88 Row 7 (T-2)" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_15" SheetName="IPAY88" Text="[PaymentIPay88.ToString]" />
-                            </If.Then>
-                          </If>
-                        </Sequence>
-                      </Sequence>
-                    </ActivityAction>
-                  </ui:ExcelApplicationScope.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:ExcelApplicationScope>
-              </Sequence>
-            </ui:CommentOut.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1389,93" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;End CIMB_StatementYear&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1568,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;End CIMB_StatementYear&quot;]" />
   </Sequence>
 </Activity>

@@ -1,4 +1,15 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DingTalk_AddFile" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="481.6,1284.8" sap2010:WorkflowViewState.IdRef="DingTalk_AddFile_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DingTalk_AddFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Msg" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:DingTalk_AddFile.in_Msg>
+    <InArgument x:TypeArguments="x:String" />
+  </this:DingTalk_AddFile.in_Msg>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>540.8,892.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>DingTalk_AddFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -55,6 +66,11 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -62,14 +78,14 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="DingTalk_AddFile" sap:VirtualizedContainerService.HintSize="492,1180" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DingTalk_AddFile" sap:VirtualizedContainerService.HintSize="475.2,788" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - DingTalk" sap:VirtualizedContainerService.HintSize="450.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start click attach file&quot;]" />
-    <ui:CommentOut DisplayName="Comment Out - works in development environment" sap:VirtualizedContainerService.HintSize="450.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+    <ui:LogMessage DisplayName="Log Message - DingTalk" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start click attach file&quot;]" />
+    <ui:CommentOut DisplayName="Comment Out - works in development environment" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_8">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416.8,161.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
@@ -130,41 +146,27 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - Chat DIngTalk" sap:VirtualizedContainerService.HintSize="450.4,488.8" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="e78bbc1c404b0f3e6790a82c0dfd29ec" Selector="&lt;wnd app='dingtalklite.exe' cls='StandardFrame_DingTalk' title='DingTalk' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - Chat DIngTalk" sap:VirtualizedContainerService.HintSize="433.6,336.8" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="e78bbc1c404b0f3e6790a82c0dfd29ec" Selector="&lt;wnd app='dingtalklite.exe' cls='StandardFrame*' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416.8,341.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,189.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Basic" sap:VirtualizedContainerService.HintSize="375.2,248.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image - File Image" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
-                <ui:ClickImage.CursorPosition>
-                  <ui:CursorPosition OffsetX="0" OffsetY="0" Position="Center" />
-                </ui:ClickImage.CursorPosition>
-                <ui:ClickImage.Image>
-                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMuSURBVFhH7Zb9T1NnFID3by5hccGNVT6sNGFAbVpapeuoQ5aBkIaMXUEdHZiVbB1qWSagwmSOMEqZg1HlUyTcUkrbe29vHt86IFVvyzZalyX88Pxycs7Jc9+c+77nHV3X+a85kTjg/yCRQc9oqEoaJZ0mfSQKqpYhY9grP4UlUpskloYZ6HTitFmx1BXCJmjj2v1FFnYNehUgv8TeGsvTQSSvHYvVxcUOH51SHz1GdPvweZswn6rGYu9CGpnlcdygZx7ySqRXp5jwt1F12kFzf4g7M/PMR58QNWL+EeFQN44PKzCdruRjjw/pxzn+FCeiZoz755JXIhYZ4VaXm/LaG4xtJ5ANcg4RpybP+XF9VIPdWU99o5VGRwfS5FOexlVSmkFNDoUlei7xgfs24ViSPYOcQ15KDAiJJrpvjTE4KPHFORPvmzz0zmyxvFt4WIsokT2JamyXPsfb1YrXUYu57AwV5lake4WHtTgS6h7JzQh3fV5a3M1YXU5stkYsVed4t6yK830PGI8mjWsFxZEQaEoKOTzJ6J1hvh36ThDgG/9VnGcrqPeJXpEdw7osRZN4E1EjRwg2V+PuOZF42xKqGLzoKEP+EMOTi6zpKmpK/J5jA9x/uMDCumJcJyieRHoX/VcJz/lO2gZ+5vdsLKOix1aIy+LvSb6Wn0NpJf4mx5LIiC/VVAVFESRklKmvcFuv0OqfIJyN7XPU834sie2lu9wLfU3vNcHVPno9F6kRV3dNUzufZWP7jM+usFGqG/P5L98T+PIyDpcbh+MCDlMN5e9VUna2gcpszOURdHDjwRJ/7LxZf8CxJOJLYaZHQwTEDRm4eZPAZTu1Zxowu6/Qno0NBQWjTCxusf5vBnP38U+MSC2U28VTvrqNrGiGeYeUYjB1sdRM+T/llNgRWkKzRDZiJFOpV0irGtrB0lISCWWPDfEgDX5Sj8lcR7Wlgdq6xldoD84xvbGfXxIJQSous/bbQ8aDP9B/vT9nr7wuGOL27DpPEvv5mrgRtxaYeTRPOPqc2Gu9ClFQ4iUZsfbHdni2spqzVy4LZDYTCkmjmn/I0RJvgROJA04k/kLnBYFi6fL4esp4AAAAAElFTkSuQmCC" />
-                </ui:ClickImage.Image>
-                <ui:ClickImage.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="571f27a3-ec01-4593-8ad9-46c15388c235" Selector="&lt;wnd app='dingtalklite.exe' cls='StandardFrame_DingTalk' title='DingTalk' /&gt;" WaitForReady="COMPLETE">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                  </ui:Target>
-                </ui:ClickImage.Target>
-              </ui:ClickImage>
-            </Sequence>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="False" ClickBeforeTyping="False" DelayBefore="3000" DisplayName="Type Into" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,96.8" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_Msg + &quot;[k(enter)]&quot;]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="20133f91-40bb-4b03-88e5-4504d20f56a3" WaitForReady="INTERACTIVE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
           </Sequence>
         </ActivityAction>
       </ui:WindowScope.Body>
@@ -175,26 +177,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WindowScope>
-    <Sequence DisplayName="Basic" sap:VirtualizedContainerService.HintSize="450.4,200" sap2010:WorkflowViewState.IdRef="Sequence_2">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Send a FIle" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
-        <ui:Click.CursorPosition>
-          <ui:CursorPosition OffsetX="70" OffsetY="143" Position="TopLeft" />
-        </ui:Click.CursorPosition>
-        <ui:Click.Target>
-          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e1b6ae1b-c365-4beb-a4da-1b5ee0fc72df" InformativeScreenshot="02540cadf7b70c7460aac6f4800f1235" Selector="&lt;wnd app='dingtalklite.exe' cls='DingMenuWnd' idx='*' /&gt;" WaitForReady="COMPLETE">
-            <ui:Target.TimeoutMS>
-              <InArgument x:TypeArguments="x:Int32" />
-            </ui:Target.TimeoutMS>
-          </ui:Target>
-        </ui:Click.Target>
-      </ui:Click>
-    </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Close click attach file&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Close click attach file&quot;]" />
   </Sequence>
 </Activity>
